@@ -1,0 +1,67 @@
+.header {
+  background-color: #fff;
+  padding: 10px 20px;
+  height: 80px;  // fixed header height
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  overflow: hidden; // prevent overflow if logo bigger
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    .left {
+      .logo-img {
+        height: 60px; // keep base height
+        width: auto;
+        transform: scale(1.5);  // visually bigger but no header growth
+        transform-origin: left center;
+        transition: transform 0.3s ease;
+      }
+    }
+
+    .middle {
+      flex: 1;
+      text-align: center;
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: #c2185b;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .right.navbar-menu {
+      display: flex;
+      gap: 20px;
+
+      .nav-link {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        position: relative;
+        padding-bottom: 4px;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #c2185b;
+        }
+
+        &.active {
+          color: #c2185b;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background-color: #c2185b;
+          }
+        }
+      }
+    }
+  }
+}

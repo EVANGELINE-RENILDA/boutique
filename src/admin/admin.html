@@ -1,0 +1,45 @@
+<div class="admin-container">
+  <div class="left-pane">
+    <h2 class="title">🛍️ Add New Product</h2>
+    <p class="subtext">Use the form below to add a product to the boutique store.</p>
+
+    <table class="product-table">
+      <tr>
+        <td>Product Title</td>
+        <td><input type="text" [(ngModel)]="productName" placeholder="e.g. Elegant Kurti" /></td>
+      </tr>
+      <tr>
+        <td>Price</td>
+        <td><input type="number" [(ngModel)]="productPrice" placeholder="e.g. 1299" /></td>
+      </tr>
+     <tr>
+  <td>Choose Image</td>
+  <td>
+    <input type="text" [(ngModel)]="productImage" placeholder="Enter image URL (e.g. from Pexels)" />
+  </td>
+</tr>
+
+      <tr>
+        <td colspan="2" class="center">
+          <button (click)="addProduct()" class="add-btn">Add Product</button>
+        </td>
+      </tr>
+    </table>
+
+    <div *ngIf="message" class="confirmation">
+      {{ message }}
+    </div>
+  </div>
+
+  <div class="right-pane">
+    <h3 class="subtitle">🧾 Added Products</h3>
+    <div *ngFor="let p of productList; let i = index" class="product-entry">
+      <img [src]="p.image" alt="{{ p.name }}" class="thumb" />
+      <div class="product-info">
+        <p><strong>{{ p.name }}</strong></p>
+        <p>₹{{ p.price }}</p>
+        <button class="delete-btn" (click)="deleteProduct(i)">🗑️ Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

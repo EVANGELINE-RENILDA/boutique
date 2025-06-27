@@ -1,0 +1,29 @@
+<div class="v-flex">
+  <div class="header">
+    <div class="header-container">
+      <div class="left">
+        <img src="assets/logo8.png" class="logo-img" alt="Logo" />
+      </div>
+
+      <div class="middle"> 
+        Welcome to Niya Boutique 💖
+      </div>
+
+      <div class="right navbar-menu">
+        <a href="#" class="nav-link">Home</a>
+       <a routerLink="/about-us" routerLinkActive="active" class="nav-link">About Us</a>
+       <a routerLink="/contact-us" routerLinkActive="active" class="nav-link">Contact Us</a>
+       <a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin LogiIn</a>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="footer center">
+    <app-footer></app-footer>
+  </div>
+</div>

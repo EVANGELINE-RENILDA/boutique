@@ -1,0 +1,114 @@
+<div class="payment-container">
+  <h2 class="title">🧾 Payment Details</h2>
+
+  <!-- Order Summary -->
+  <div class="order-summary card">
+    <h3>Order Summary</h3>
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+      <tr *ngFor="let item of cartItems">
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>₹{{ item.price }}</td>
+        <td>₹{{ item.quantity * item.price }}</td>
+      </tr>
+    </table>
+    <h4 class="grand-total">Grand Total: ₹{{ getGrandTotal() }}</h4>
+  </div>
+
+  <!-- Customer Details -->
+  <div class="customer-details card">
+    <h3>Customer Info</h3>
+    <form #customerForm="ngForm">
+      <input type="text" placeholder="Full Name" name="name" ngModel required />
+      <input type="tel" placeholder="Mobile Number" name="mobile" ngModel required />
+      <textarea placeholder="Delivery Address" name="address" ngModel required></textarea>
+    </form>
+  </div>
+
+  <!-- Payment Options -->
+  <div class="payment-methods card">
+    <h3>Payment Method</h3>
+    <label>
+     <input type="radio" name="payment" value="cod" [(ngModel)]="paymentMethod" (change)="onPaymentChange()" />
+
+      Cash on Delivery
+    </label><br />
+    <label>
+      <label>
+  <input type="radio" name="payment" value="upi" [(ngModel)]="paymentMethod" (change)="onPaymentChange()" />
+  UPI
+</label>
+
+      UPI
+    </label><br />
+    <label>
+       <input type="radio" name="payment" value="netbanking" [(ngModel)]="paymentMethod" (change)="onPaymentChange()" />
+      Net Banking
+    </label>
+  </div>
+<!-- Modal Popup for Payment Input -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{ show: showModal }" [ngStyle]="{ display: showModal ? 'block' : 'none' }">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{ selectedGateway === 'upi' ? 'Enter UPI ID' :
+             selectedGateway === 'netbanking' ? 'Enter Bank Name' :
+             'Enter Address' }}
+        </h5>
+        <button type="button" class="close" (click)="closeModal()">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <ng-container *ngIf="selectedGateway === 'upi'">
+          <input [(ngModel)]="upiId" placeholder="example@upi" class="form-control" />
+        </ng-container>
+
+        <ng-container *ngIf="selectedGateway === 'netbanking'">
+          <input [(ngModel)]="bankName" placeholder="Enter Bank Name" class="form-control" />
+        </ng-container>
+
+        <ng-container *ngIf="selectedGateway === 'cod'">
+          <textarea [(ngModel)]="deliveryAddress" placeholder="Enter your address..." class="form-control"></textarea>
+        </ng-container>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        <button class="btn btn-success" (click)="confirmModal()">Confirm</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <!-- Place Order -->
+  <button class="place-order-btn" (click)="placeOrder()">Place Order</button>
+</div>
+<ng-container *ngIf="selectedGateway === 'upi'">
+  <label>Enter your UPI ID:</label>
+  <input
+    type="text"
+    [(ngModel)]="upiId"
+    placeholder="example@upi"
+    class="form-control"
+  />
+</ng-container>
+ <ng-container *ngIf="selectedGateway === 'netbanking'">
+          <label>Bank Name:</label>
+          <input
+            type="text"
+            [(ngModel)]="bankName"
+            placeholder="e.g. State Bank of India"
+            class="form-control"
+          />
+        </ng-container>

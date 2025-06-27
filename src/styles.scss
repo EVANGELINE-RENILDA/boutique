@@ -1,0 +1,49 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; // block body scroll
+}
+.d-flex{
+  display: flex;
+}
+.v-flex {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; // take full screen height
+}
+.jstw-btn{
+  display: flex;
+  justify-content: space-between;
+}
+.header {
+  height: 60px;
+  background-color: aqua; 
+  flex-shrink: 0;
+}
+
+.footer {
+  height: 60px;
+  background-color: aqua;
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto; // only this scrolls
+  padding: 20px;
+}
+.d-flex {
+  display: flex;
+  align-items: center;  /* vertical-ah center pannum */
+  gap: 10px;            /* logo & text-kulla space */
+  height: 100%;         /* header height full occupy panna */
+  padding-left: 10px;
+}
+.align-center {
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}

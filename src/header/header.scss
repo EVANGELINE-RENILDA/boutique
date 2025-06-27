@@ -1,0 +1,19 @@
+.logo-img {
+  height: 100%;      /* Slightly smaller than header height */
+  max-width: 100%;  /* Don't overflow horizontally */
+  object-fit: contain;
+}.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+
+
+  h1 {
+    font-size: 1.8rem;
+    color: #c71585;
+    margin: 0;
+  }
+}
