@@ -1,0 +1,13 @@
+{
+  "routes": {
+    "/boutique": {},
+    "/boutique/about-us": {},
+    "/boutique/admin": {},
+    "/boutique/cart": {},
+    "/boutique/contact-us": {},
+    "/boutique/home": {},
+    "/boutique/order-now": {},
+    "/boutique/payment": {},
+    "/boutique/products": {}
+  }
+}
